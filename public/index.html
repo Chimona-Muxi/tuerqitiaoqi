@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>土耳其跳棋</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="side-panel">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div>
+          <h1>土耳其跳棋</h1>
+          <p id="modeCaption">人机对弈</p>
+        </div>
+      </div>
+
+      <div class="mode-tabs" role="tablist" aria-label="模式">
+        <button class="mode-button active" data-mode="ai">人机</button>
+        <button class="mode-button" data-mode="local">同屏</button>
+      </div>
+
+      <section class="control-block" id="aiPanel">
+        <label class="field">
+          <span>AI 强度</span>
+          <select id="difficultySelect">
+            <option value="easy">轻松</option>
+            <option value="steady" selected>稳健</option>
+            <option value="hard">强手</option>
+          </select>
+        </label>
+        <button class="primary" id="newGameButton">新开一局</button>
+      </section>
+
+      <section class="control-block hidden" id="localPanel">
+        <button class="primary" id="newLocalButton">新开一局</button>
+      </section>
+
+      <div class="players" id="playerCards"></div>
+    </aside>
+
+    <section class="game-stage">
+      <header class="top-bar">
+        <div>
+          <p id="turnMeta">第 1 手</p>
+          <h2 id="statusTitle">轮到你</h2>
+        </div>
+        <div class="rule-pills">
+          <span id="capturePill">必须吃子</span>
+          <span id="maxPill">最多吃子</span>
+          <span id="chainPill">连吃</span>
+        </div>
+      </header>
+
+      <div class="board-card">
+        <div class="board-wrap">
+          <div class="board-coords files" aria-hidden="true">
+            <span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span>
+          </div>
+          <div class="board-body">
+            <div class="board-coords ranks" aria-hidden="true">
+              <span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span>
+            </div>
+            <div class="board" id="board" aria-label="土耳其跳棋棋盘"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="info-panel">
+      <div class="metrics" id="metrics"></div>
+      <section class="log-panel">
+        <h2>记录</h2>
+        <div class="log-list" id="logList"></div>
+      </section>
+    </aside>
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script type="module" src="./app.mjs"></script>
+</body>
+</html>
